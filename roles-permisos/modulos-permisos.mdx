@@ -1,0 +1,116 @@
+# Permisos por modulo:
+
+**A continuación se brindan tablas que muestran explicitamente los permisos disponibles por cada modulo del sistema Oclü.**
+
+## Pacientes:
+
+### Permisos por Funcionalidad
+
+| Acción                 | Permiso Requerido   | Descripción                    |
+| ---------------------- | ------------------- | ------------------------------ |
+| Ver lista de pacientes | `list_patients`     | Acceder al listado             |
+| Agregar paciente       | `add_patient`       | Crear nuevo paciente           |
+| Editar paciente        | `edit_patient`      | Modificar datos                |
+| Eliminar paciente      | `delete_patient`    | Borrar paciente (permanente)   |
+| Importar pacientes     | `add_patient`       | Importación masiva desde Excel |
+| Ver expediente clínico | `view_expedient`    | Acceso a historia clínica      |
+| Agregar multimedia     | `add_multimedia`    | Subir archivos                 |
+| Editar multimedia      | `edit_multimedia`   | Modificar archivos             |
+| Eliminar multimedia    | `delete_multimedia` | Borrar archivos                |
+| Agregar evolución      | `add_evolution`     | Crear notas clínicas           |
+| Crear presupuesto      | `add_budget`        | Nuevos planes de tratamiento   |
+
+### Permisos Necesarios
+
+| Acción             | Permiso          | Rol Típico                |
+| ------------------ | ---------------- | ------------------------- |
+| Ver lista          | `list_patients`  | Todos                     |
+| Acceder a ficha    | `list_patients`  | Todos                     |
+| Crear paciente     | `add_patient`    | Doctor, Secretaria, Admin |
+| Eliminar paciente  | `delete_patient` | Solo Admin                |
+| Importar pacientes | `add_patient`    | Admin, Doctor             |
+
+---
+
+## Calendario
+
+### Permisos por Funcionalidad
+
+| Acción               | Permiso              | Rol Típico                |
+| -------------------- | -------------------- | ------------------------- |
+| Ver calendario       | `list_calendar`      | Todos                     |
+| Crear cita           | `add_appointment`    | Secretaria, Admin, Doctor |
+| Editar cita          | `edit_appointment`   | Secretaria, Admin, Doctor |
+| Eliminar cita        | `delete_appointment` | Secretaria, Admin         |
+| Seleccionar doctores | `select_doctors`     | Secretaria, Admin         |
+| Agregar pausa        | `add_agenda_break`   | Secretaria, Admin, Doctor |
+
+---
+
+## Tesoreria - Gestion de finanzas.
+
+### Permisos por Funcionalidad
+
+| Acción                   | Permiso                | Rol Típico                   |
+| ------------------------ | ---------------------- | ---------------------------- |
+| Ver dashboard            | `list_treasury`        | Admin, Secretaria autorizada |
+| Registrar pagos          | `register_payment`     | Secretaria, Admin            |
+| Ver reportes de ventas   | `see_report_sales`     | Admin                        |
+| Ver deudores             | `see_report_debtors`   | Admin, Secretaria            |
+| Ver balance              | `see_report_movements` | Admin                        |
+| Agregar gastos           | `add_expense`          | Admin                        |
+| Ver reportes de personal | `see_report_personal`  | Admin, Doctor (solo propio)  |
+| Gestionar cajas          | `manage_boxes`         | Admin                        |
+
+---
+
+## Administrador
+
+### Permisos Generales del Módulo
+
+| Sección            | Permiso Principal      | Solo Admin |
+| ------------------ | ---------------------- | :--------: |
+| Personal           | `list_staff`           |     ✅     |
+| Agregar Personal   | `add_staff`            |     ✅     |
+| Editar Personal    | `edit_staff`           |     ✅     |
+| Horarios           | (implícito con staff)  |     ✅     |
+| Permisos           | `manage_permissions`   |     ✅     |
+| Contratos          | `list_contracts`       |     ✅     |
+| Organizaciones     | `list_clinics`         |     ✅     |
+| Categorías         | `list_categories`      |     ✅     |
+| Agregar Categorías | `add_category`         |     ✅     |
+| Plantillas         | `list_templates`       |     ✅     |
+| Editar Plantillas  | `edit_template`        |     ✅     |
+| Estados Calendario | `list_calendar_status` |     ✅     |
+| Cajas              | `----------`           |     ✅     |
+
+(Todavía no hay permisos para las cajas. **Funcionalidad a implementar en un futuro.**)
+
+---
+
+## Laboratorios
+
+### Permisos por Funcionalidad
+
+| Acción              | Permiso                  | Rol Típico    |
+| ------------------- | ------------------------ | ------------- |
+| Ver laboratorios    | `list_laboratories`      | Doctor, Admin |
+| Agregar laboratorio | `add_labs`               | Admin         |
+| Editar laboratorio  | `edit_lab`               | Admin         |
+| Ver solicitudes     | (sin permiso específico) | Doctor, Admin |
+| Crear solicitud     | (sin permiso específico) | Doctor, Admin |
+
+---
+
+## Stock
+
+### Permisos por Funcionalidad
+
+| Acción            | Permiso          | Rol Típico      |
+| ----------------- | ---------------- | --------------- |
+| Ver inventario    | `list_inventory` | Admin, Auxiliar |
+| Editar inventario | `edit_inventory` | Admin           |
+| Crear órdenes     | `create_orders`  | Admin           |
+| Ver proveedores   | `list_suppliers` | Admin           |
+
+**Nota**: Los permisos exactos pueden variar según configuración.
