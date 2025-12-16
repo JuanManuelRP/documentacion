@@ -1,0 +1,278 @@
+# Gestión de Pacientes - Visión General
+
+El módulo de **Pacientes** es el corazón del sistema Oclü. Aquí gestionas toda la información clínica, administrativa y financiera de tus pacientes.
+
+---
+
+## ¿Qué Puedes Hacer en Este Módulo?
+
+### Información del Paciente
+
+-   **Datos personales**: Nombre, apellido, documento, fecha de nacimiento
+-   **Datos de contacto**: Email, teléfono, dirección completa
+-   **Seguros médicos**: Información de cobertura y planes
+-   **Historia clínica**: Número de HC único
+
+### Expediente Clínico Digital
+
+-   **Antecedentes médicos**: Alergias, enfermedades previas, medicación actual
+-   **Odontograma**: Representación visual del estado dental
+-   **Evoluciones**: Notas de cada consulta y tratamiento realizado
+-   **Multimedia**: Fotos intraorales, radiografías, modelos 3D
+-   **Recetas**: Prescripciones médicas digitales
+-   **Consentimientos**: Documentos firmados digitalmente
+
+### Gestión Financiera
+
+-   **Presupuestos**: Planes de tratamiento con costos
+-   **Pagos**: Registro de cobros y recibos
+-   **Balance**: Deuda actual y historial de pagos
+-   **Evoluciones de presupuesto**: Seguimiento de tratamientos en curso
+
+### Citas y Agenda
+
+-   **Historial de citas**: Todas las consultas del paciente
+-   **Próximas citas**: Turnos agendados
+-   **Comentarios**: Notas administrativas sobre el paciente
+
+### Atajos de Teclado
+
+| Atajo      | Acción                                          |
+| ---------- | ----------------------------------------------- |
+| `CTRL + F` | Enfocar campo de búsqueda                       |
+| `ENTER`    | (En fila seleccionada) Abrir ficha del paciente |
+| `TAB`      | Navegar entre elementos                         |
+| `ESC`      | Limpiar búsqueda                                |
+
+---
+
+# Estructura del modulo pacientes y sus especificaciones
+
+## Acceso al Módulo
+
+### Desde el Menú Lateral
+
+1. Haz clic en **"Pacientes"** en el menú lateral izquierdo
+2. Verás el listado completo de pacientes registrados
+
+    ![image.png](/Pacientes3.png)
+
+### Permisos Requeridos
+
+Para acceder a este módulo necesitas el permiso:
+
+-   **`list_patients`** - Ver listado de pacientes
+
+**Nota**: Diferentes acciones dentro del módulo requieren permisos específicos adicionales.
+
+---
+
+## Estructura del Módulo
+
+El módulo de pacientes se divide en varias secciones:
+
+### 1. Lista de Pacientes (`/patients`)
+
+Vista principal con todos los pacientes en formato de tabla.
+
+**Funcionalidades**:
+
+-   Búsqueda por nombre, email, documento, telefono o HC
+-   Ordenamiento por columnas
+-   Paginación
+-   Acciones rápidas (editar, eliminar)
+-   Importar pacientes desde Excel
+
+### 2. Agregar Paciente (`/patients/add`)
+
+Formulario de dos pasos para crear un nuevo paciente.
+
+**Paso 1 - Datos Básicos**:
+
+-   Nombre y apellido (obligatorio)
+-   Email
+-   Fecha de nacimiento (obligatorio)
+-   Género (obligatorio)
+-   Teléfono con prefijo (obligatorio)
+-   Documento de identidad (obligatorio)
+-   Número de historia clínica
+
+**Paso 2 - Datos Adicionales**:
+
+-   Dirección completa (obligatorio)
+-   País, provincia, localidad (obligatorio)
+-   Seguro médico (opcional)
+-   Plan y número de afiliado
+-   Referido por
+
+### 3. Ficha del Paciente (`/patients/:id`)
+
+Vista completa del paciente con pestañas:
+
+#### A. Datos (`/patients/:id/data`)
+
+Sub-secciones:
+
+-   **Información**: Datos personales editables
+-   **Citas**: Historial de turnos
+-   **Comentarios**: Notas administrativas
+-   **Historial**: Registro de cambios
+
+#### B. Expediente (`/patients/:id/expedient`)
+
+Sub-secciones:
+
+-   **Antecedentes**: Historia médica
+-   **Odontograma**: Estado dental actual
+-   **Evoluciones**: Notas clínicas por consulta
+-   **Multimedia**: Archivos del paciente
+-   **Recetas Digitales**: Prescripciones
+-   **Consentimientos**: Documentos firmados
+
+#### C. Presupuestos (`/patients/:id/budgets`)
+
+-   Lista de todos los presupuestos del paciente
+-   Estados: Pendiente, Aprobado, Rechazado, Cerrado, Borrador, Eliminado
+-   Acceso rápido a cada presupuesto
+-   Botón para registrar nuevo pago
+
+#### D. Balance (`/patients/:id/balance`)
+
+-   Resumen financiero completo
+-   Total adeudado
+-   Total pagado
+-   Saldo pendiente
+-   Historial de pagos
+
+# Funcionalidades de el modulo pacientes.
+
+## Nuevo Paciente (Primera Visita)
+
+1. **Crear Paciente**
+    - Ir a "Pacientes" → "Agregar paciente"
+    - Completar formulario de 2 pasos
+    - Guardar
+2. **Cargar Antecedentes**
+    - Ingresar al paciente creado
+    - Ir a "Historia Clinica" → "Antecedentes"
+    - Registrar alergias, enfermedades, medicación
+3. **Tomar Fotografías/Radiografías**
+    - Ir a "Historia Clinica" → "Multimedia"
+    - Subir archivos (fotos intraorales, radiografías)
+    - Organizar por categorías
+4. **Examen Odontológico**
+    - Ir a "Historia Clinica" → "Odontograma"
+    - Marcar estado actual de cada pieza dental
+    - Agregar diagnósticos
+5. **Crear Presupuesto**
+    - Ir a "Presupuestos"
+    - Crear nuevo presupuesto
+    - Agregar tratamientos necesarios
+    - Definir método de pago
+    - Enviar al paciente para aprobación
+6. **Registrar Evolución**
+    - Ir a "Historia Clinica" → "Evoluciones"
+    - Crear nueva evolución
+    - Describir lo realizado en la consulta
+
+## Paciente Recurrente (Siguiente Visita)
+
+1. **Buscar Paciente**
+    - Usar barra de búsqueda en lista de pacientes
+    - Buscar por nombre, email, documento o HC
+    - Hacer clic en el paciente
+2. **Revisar Información**
+    - Verificar datos de contacto actualizados
+    - Revisar historial de citas
+    - Consultar evoluciones previas
+3. **Continuar Tratamiento**
+    - Ir al presupuesto aprobado
+    - Ver tratamientos pendientes
+    - Actualizar evolución con lo realizado
+4. **Registrar Pago** (si aplica)
+    - Ir a "Presupuesto"
+    - Hacer clic en "Registrar pago"
+    - Ingresar monto y método
+    - Ir a "Balance"
+    - Imprimir recibo
+
+---
+
+# Funcionalidades Destacadas
+
+## Búsqueda Inteligente
+
+La barra de búsqueda filtra en tiempo real por:
+
+-   Nombre completo
+-   Email
+-   Documento de identidad
+-   Número de historia clínica
+
+**Consejo**: No necesitas escribir el nombre completo, el sistema filtra mientras escribes.
+
+## Importación Masiva
+
+Puedes importar múltiples pacientes desde un archivo Excel:
+
+1. Clic en "Importar pacientes"
+2. Descargar plantilla Excel
+3. Completar datos (máximo 500 filas)
+4. Subir archivo
+5. El sistema valida e importa automáticamente
+
+## Odontograma Interactivo
+
+El odontograma digital permite:
+
+-   Clic en cualquier diente para agregar símbolos
+-   Superficies individuales (mesial, distal, oclusal, vestibular, lingual/palatino)
+-   Símbolos de diagnóstico (caries, fractura, ausente)
+-   Símbolos de tratamiento (obturación, corona, endodoncia)
+-   Visualización diferenciada por colores
+
+## Multimedia formatos
+
+Soporta múltiples formatos:
+
+-   **Imágenes**: JPG, PNG, HEIC
+-   **Documentos**: PDF, DOCX, XLSX
+-   **Videos**: MP4, MOV, AVI, WEBM, MKV
+-   **Modelos 3D**: STL, PLY (visualizables en el navegador)
+
+# Funcionalidades Especiales
+
+## Ordenamiento Inteligente
+
+Por defecto, los pacientes se ordenan alfabéticamente por nombre (A-Z).
+
+**Casos útiles de ordenamiento**:
+
+## Por Fecha de Nacimiento
+
+-   **Descendente** (más reciente primero): Ver pacientes más jóvenes
+-   **Ascendente** (más antigua primero): Ver pacientes más mayores
+
+## Por Documento
+
+-   Útil si usas documentos secuenciales
+-   Ordena numéricamente, no alfabéticamente
+
+## Por HC
+
+-   Ordena por número de historia clínica
+-   Útil si asignas HCs secuenciales por orden de llegada
+
+## Badge de Conteo Dinámico
+
+El badge actualiza su número según:
+
+-   Total de pacientes si no hay búsqueda
+-   Total de resultados si hay búsqueda activa
+
+**Ejemplo**:
+
+```
+Sin búsqueda: "Total de pacientes: 156"
+Con búsqueda: "Total de pacientes: 3" (3 resultados encontrados)
+```

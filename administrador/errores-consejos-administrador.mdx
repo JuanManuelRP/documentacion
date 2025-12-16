@@ -1,0 +1,49 @@
+# Consejos y Mejores Prácticas
+
+## Gestión de Personal
+
+1. **Roles claros**: Define bien qué puede hacer cada rol
+2. **Principio de menor privilegio**: Solo otorga los permisos necesarios
+3. **Revisión periódica**: Audita permisos cada 3-6 meses
+4. **Desactivar, no eliminar**: Si alguien se va, desactiva su cuenta en lugar de borrarla
+
+## Organización de Categorías
+
+1. **Categorías lógicas**: Agrupa tratamientos de forma coherente
+2. **Nombres consistentes**: Usa nomenclatura estándar
+3. **Evitar duplicados**: Verifica antes de crear nueva categoría
+4. **Mantener actualizado**: Revisa precios de tratamientos regularmente
+
+## Plantillas
+
+1. **Lenguaje claro**: Usa términos comprensibles para pacientes
+2. **Legal**: Consulta con abogado para consentimientos
+3. **Variables dinámicas**: Aprovecha campos personalizables
+4. **Versiones**: Guarda copias antiguas antes de grandes cambios
+
+## Seguridad
+
+1. **Contraseñas fuertes**: Exige al crear usuarios
+2. **Cambio periódico**: Recomienda cambiar contraseña cada 3 meses
+3. **Sesiones únicas**: No compartir credenciales
+4. **Logs de auditoría**: Revisa quién hace qué (si disponible)
+
+---
+
+# Errores Comunes
+
+## No puedo ver el módulo de Administración
+
+**Causa**: No tienes permisos de administrador **Solución**: Solo Admin y Super Admin tienen acceso
+
+## No puedo editar permisos de un usuario
+
+**Causa**: Solo Super Admin puede gestionar permisos **Solución**: Contacta al Super Administrador
+
+## Las plantillas no se guardan
+
+**Causa**: Campos dinámicos mal escritos o caracteres especiales **Solución**: Verifica sintaxis de variables `{{variable}}`
+
+## No puedo eliminar una categoría
+
+**Causa**: La categoría tiene tratamientos o presupuestos asociados **Solución**: No es posible eliminar para mantener integridad de datos

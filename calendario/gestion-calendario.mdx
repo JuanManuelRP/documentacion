@@ -1,0 +1,115 @@
+# Agenda y Citas - Visión General
+
+El módulo de **Calendario** es el centro de operaciones diarias de tu clínica dental. Aquí gestionas todas las citas, horarios de los doctores y la disponibilidad de la clínica.
+
+---
+
+## ¿Qué es el Calendario?
+
+El calendario es una agenda interactiva que te permite:
+
+-   **Visualizar citas**: Ver todos los turnos agendados
+-   **Crear citas**: Agendar nuevos turnos para pacientes
+-   **Gestionar citas**: Editar, cancelar o reprogramar turnos
+-   **Asignar doctores**: Programar citas con profesionales específicos
+-   **Estados de citas**: Marcar como confirmada, completada, cancelada, etc.
+-   **Pausas y bloqueos**: Crear espacios no disponibles en la agenda
+-   **Múltiples vistas**: Ver agenda por día o por semana
+
+---
+
+## Información en Cada Cita
+
+Al ver una cita en el calendario, verás:
+
+-   **Hora**: Inicio y fin de la cita
+-   **Paciente**: Nombre completo
+-   **Doctor**: Profesional asignado (si aplica)
+-   **Motivo**: Razón de la consulta (si se especificó)
+-   **Estado**: Color y/o badge del estado actual
+-   **Duración**: Tiempo estimado (visualizado como altura del bloque)
+
+---
+
+## Flujo de Trabajo Típico
+
+### Para Secretaria/Recepcionista
+
+#### Gestión del Día
+
+1. **Al iniciar el día**:
+    - Revisar citas del día en vista diaria
+    - Confirmar citas pendientes (llamar a pacientes)
+    - Identificar huecos disponibles
+2. **Durante el día**:
+    - Responder llamadas para agendar citas
+    - Marcar citas como "Confirmada" cuando el paciente confirma
+    - Cambiar a "En curso" cuando el paciente llega
+    - Marcar como "Completada" al finalizar atención
+    - Manejar cancelaciones y reprogramaciones
+3. **Al finalizar el día**:
+    - Marcar "No asistió" para ausencias
+    - Preparar agenda del día siguiente
+
+#### Agendar Nueva Cita
+
+1. Paciente llama o llega para solicitar turno
+2. Identificar fecha y hora disponible
+3. Clic en "Nueva Cita"
+4. Completar formulario:
+    - Seleccionar paciente (o crear si es nuevo)
+    - Elegir fecha y hora
+    - Asignar doctor
+    - Especificar motivo
+    - Definir duración
+5. Guardar
+6. (Opcional) Enviar confirmación por email al paciente
+
+### Para Doctor
+
+#### Revisión de Agenda
+
+1. **Al iniciar el día**:
+    - Ver citas agendadas en vista diaria
+    - Revisar motivos de consulta
+    - Identificar pacientes con tratamientos en curso
+2. **Durante consultas**:
+    - Acceder a expediente del paciente desde la cita
+    - Completar evoluciones
+    - Agendar próxima cita si es necesario
+3. **Al finalizar**:
+    - Verificar que todas las citas estén marcadas como completadas
+
+---
+
+## Funcionalidades Especiales
+
+### Drag & Drop (Arrastrar y Soltar)
+
+**En Vista Diaria**:
+
+-   Puedes arrastrar una cita a otro horario
+-   O a otra columna (otro doctor)
+-   El sistema actualiza automáticamente
+
+**Limitaciones**:
+
+-   Requiere permisos de edición
+
+### Clic Rápido para Crear Cita
+
+**En Vista Diaria**:
+
+1. Haz clic en un espacio vacío del calendario
+2. Se abre modal con fecha/hora pre-completada
+3. Solo completas paciente y motivo
+
+### Notificaciones Automáticas (si está configurado)
+
+El sistema puede enviar:
+
+-   **24h antes**: Recordatorio de cita al paciente
+-   **Al crear**: Confirmación de cita agendada
+-   **Al cancelar**: Notificación de cancelación
+
+**Nota**: Depende de la configuración del administrador.

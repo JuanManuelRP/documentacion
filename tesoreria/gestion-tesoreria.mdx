@@ -1,0 +1,132 @@
+# Tesorería y Cobros - Visión General
+
+El módulo de **Tesorería** es el centro financiero de tu clínica dental. Aquí controlas ingresos, egresos, pagos de pacientes y la salud financiera de tu negocio.
+
+---
+
+## ¿Qué Puedes Hacer en Este Módulo?
+
+### Control Financiero
+
+-   **Dashboard**: Vista general de ingresos, gastos y balance
+-   **Cajas y bancos**: Gestión de efectivo y cuentas bancarias
+-   **Monedas**: Manejo de múltiples divisas (Peso, Dólar)
+-   **Gastos**: Registro de egresos operativos
+
+### Cobros y Pagos
+
+-   **Registrar pagos**: Cobros de pacientes por tratamientos
+-   **Recibos**: Generación automática de comprobantes
+-   **Balance del paciente**: Deuda actual de cada paciente
+-   **Historial**: Todos los pagos realizados
+
+### Reportes Financieros
+
+-   **Reporte de ventas**: Ingresos por período
+-   **Reporte de deudores**: Pacientes con saldo pendiente
+-   **Reporte de balance**: Ingresos vs egresos
+-   **Reporte de movimientos**: Transacciones por caja
+-   **Reporte de ingresos**: Análisis de cobranzas
+-   **Reporte de personal**: Producción por doctor
+
+## Divisas y Monedas
+
+Oclü CRM soporta el manejo de **múltiples divisas y monedas** para adaptarse a las necesidades de tu clínica.
+
+### Divisas Soportadas
+
+El sistema acepta las siguientes divisas y monedas:
+
+-   **Peso Argentino (ARS)**
+-   **Dólar Estadounidense (USD)**
+
+Sin embargo, puedes configurar, crear o editar monedas y divisas y usarlas como medio de pago dentro de Oclü CRM.
+
+---
+
+## Acceso al Módulo
+
+### Desde el Menú Lateral
+
+Haz clic en **"Tesorería"** en el menú lateral para acceder al dashboard.
+
+**Ruta**: `/treasury` **Permisos**: `list_treasury` (generalmente Admin y Secretarias autorizadas)
+
+[IMAGEN: Menú lateral con Tesorería]
+
+---
+
+## Estructura del Módulo
+
+### 1. Dashboard de Tesorería (`/treasury`)
+
+Vista principal con resumen financiero.
+
+**Tarjetas de Resumen**:
+
+-   **Ingresos del mes**: Total cobrado en el mes actual
+-   **Gastos del mes**: Total de egresos del mes
+-   **Balance del mes**: Diferencia (ingresos - gastos)
+-   **Caja actual**: Efectivo disponible
+
+**Gráficos**:
+
+-   Evolución de ingresos (últimos 6 meses)
+-   Distribución de gastos por categoría
+-   Comparación ingresos vs gastos
+
+[IMAGEN: Dashboard de tesorería con gráficos]
+
+### 2. Cajas y Bancos (`/treasury/accounts/accounts`)
+
+Gestión de puntos de cobro y cuentas.
+
+**Tipos de Caja**:
+
+-   **Caja Efectivo**: Dinero físico en la clínica
+-   **Banco**: Cuentas bancarias
+-   **Tarjeta**: Terminales de cobro con tarjeta
+
+**Información por Caja**:
+
+-   Saldo actual
+-   Moneda
+-   Movimientos del día
+-   Historial completo
+
+### 3. Gastos (`/treasury/accounts/expenses`)
+
+Registro de todos los egresos de la clínica.
+
+**Categorías de Gastos**:
+
+-   Sueldos de personal
+-   Insumos odontológicos
+-   Servicios (luz, agua, internet)
+-   Mantenimiento
+-   Laboratorio externo
+-   Alquiler
+-   Otros
+
+**Información de Cada Gasto**:
+
+-   Fecha
+-   Monto
+-   Categoría
+-   Descripción
+-   Método de pago
+-   Comprobante (opcional)
+
+### 4. Monedas (`/treasury/currencies`)
+
+Configuración de divisas utilizadas.
+
+**Funcionalidades**:
+
+-   Ver todas las monedas activas
+-   Configurar tipo de cambio
+-   Moneda principal de la clínica
+
+**Nota**: Generalmente configurado por el administrador.
+
+---

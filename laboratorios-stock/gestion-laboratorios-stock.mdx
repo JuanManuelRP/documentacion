@@ -1,0 +1,276 @@
+# Laboratorios y Stock - Visión General
+
+Los módulos de **Laboratorios** y **Stock** te permiten gestionar trabajos protésicos externos y el inventario de materiales e insumos de la clínica.
+
+---
+
+# 1. Módulo de Laboratorios
+
+El sistema de laboratorios gestiona solicitudes de trabajos protésicos a laboratorios externos.
+
+### Acceso
+
+**Ruta**: `/laboratory/solicitations` **Permiso**: `list_laboratories`
+
+![image.png](/Laboratoriosbase.png)
+
+---
+
+### Estructura del Módulo (Pestañas)
+
+#### A. Laboratorios (`/laboratory/labs`)
+
+Gestión de laboratorios proveedores.
+
+**Permisos**: `list_laboratories`, `add_labs`, `edit_lab`
+
+**Información de cada Laboratorio**:
+
+-   Nombre del laboratorio
+-   Contacto (persona responsable)
+-   Teléfono
+-   Email
+-   Dirección
+-   Detalle
+
+**Acciones**:
+
+-   Agregar nuevo laboratorio
+-   Editar datos del laboratorio
+-   Activar/Desactivar laboratorio
+-   Ver historial de trabajos con ese laboratorio
+
+**Uso típico**: Mantener listado actualizado de laboratorios con los que trabaja la clínica.
+
+![image.png](/Laboratorios.png)
+
+---
+
+#### C. Solicitudes (`/laboratory/solicitations`)
+
+Registro de trabajos enviados a laboratorios.
+
+**Información de cada Solicitud**:
+
+-   **Paciente**: Para quién es el trabajo
+-   **Laboratorio**: A quién se envía
+-   **Tipo de trabajo**: Qué se solicita (corona, puente, etc.)
+-   **Fecha de solicitud**: Cuándo se envió
+-   **Fecha estimada de entrega**: Cuándo debería estar listo
+-   **Estado**: Solicitado, En proceso, Listo, Entregado, Cancelado
+-   **Costo**: Precio del trabajo
+-   **Observaciones**: Detalles especiales (color, forma, etc.)
+
+**Crear Nueva Solicitud**:
+
+1. Clic en **"Nueva Solicitud"**
+2. Completar formulario:
+    - Seleccionar paciente
+    - Seleccionar laboratorio
+    - Elegir tipo de trabajo
+    - Especificar detalles (pieza dental, color de diente, etc.)
+    - Fecha esperada de entrega
+    - Costo acordado
+    - Observaciones especiales
+3. Guardar
+
+**Estados del Trabajo**:
+
+| Estado         | Descripción                            | Color        |
+| -------------- | -------------------------------------- | ------------ |
+| **Solicitado** | Enviado al laboratorio                 | Amarillo     |
+| **En Proceso** | Laboratorio está trabajando            | Azul         |
+| **Listo**      | Trabajo terminado, pendiente de retiro | Verde        |
+| **Entregado**  | Recibido en la clínica                 | Verde Oscuro |
+| **Cancelado**  | Solicitud anulada                      | Rojo         |
+
+**Actualizar Estado**:
+
+-   Seleccionar solicitud
+-   Cambiar estado según progreso
+
+![image.png](/Estadodesolicitud.png)
+
+---
+
+# 2. Módulo de Stock (Inventario)
+
+Gestiona materiales, insumos y productos de la clínica.
+
+### Acceso
+
+**Ruta**: `/stock`
+
+**Estructura con Pestañas**:
+
+#### A. Inventario (`/stock/inventory`)
+
+Listado de todos los productos en stock.
+
+**Información por Producto**:
+
+-   Nombre del producto
+-   Código/SKU (si aplica)
+-   Categoría (Material odontológico, Oficina, Limpieza, etc.)
+-   Cantidad actual
+-   Unidad (Unidades, Cajas, Litros, Gramos, etc.)
+-   Stock mínimo (para alertas)
+-   Precio unitario
+-   Proveedor
+
+**Acciones**:
+
+-   Agregar nuevo producto
+-   Editar producto
+-   Ajustar stock (entrada/salida)
+-   Ver historial de movimientos
+-   Marcar como agotado
+
+**Alerta**:
+
+![image.png](/advertenciadestock.png)
+
+---
+
+#### B. Movimientos (`/stock/orders`)
+
+Entradas y salidas de los productos.
+
+**Información de cada movimiento de producto**:
+
+-   Operación
+-   Fecha
+-   Proveedor
+-   Producto
+-   Cantidad
+-   Precio unitario
+-   Acciones
+
+![Movimientos.png](/images/Movimientos.png)
+
+**Crear Entrada**:
+
+1. Clic en **"Crear Entrada"**
+2. Seleccionar:
+
+-   Producto
+-   Precio de costo
+-   Cantidad
+
+    ![image.png](/images/image.png)
+
+**Crear Salida**:
+
+1. Clic en **"Crear Salida"**
+2. Seleccionar:
+
+-   Producto
+-   Precio de costo
+-   Cantidad
+
+    ![image.png](/Crearsalida.png)
+
+---
+
+#### C. Proveedores (`/stock/suppliers`)
+
+Directorio de proveedores de insumos.
+
+**Información de cada Proveedor**:
+
+-   Nombre - Razón social
+-   Apellido
+-   Email
+-   Documento
+-   Teléfono
+
+**Acciones**:
+
+-   Agregar proveedor
+-   Editar información
+-   Ver historial de órdenes
+-   Marcar proveedor favorito
+
+---
+
+## Flujos de Trabajo
+
+### Flujo de Laboratorio
+
+#### 1. Necesidad de Trabajo Protésico
+
+**Escenario**: Un paciente necesita una corona.
+
+1. **Durante Consulta**:
+    - Doctor identifica que se necesita corona
+    - Se prepara el diente
+    - Se toma impresión
+2. **Crear Solicitud**:
+    - Ve a "Laboratorios" → "Solicitudes"
+    - Clic en "Nueva Solicitud"
+    - Completa datos:
+        - Paciente: Juan Pérez
+        - Laboratorio: DentLab S.A.
+        - Trabajo: Corona de zirconio
+        - Pieza: 16 (Molar superior derecho)
+        - Color: A2
+        - Fecha entrega: +7 días
+        - Costo: \$15,000
+    - Guardar
+3. **Enviar al Laboratorio**:
+    - Imprimir orden
+    - Embalar impresión + orden
+    - Enviar físicamente al laboratorio
+4. **Seguimiento**:
+    - Laboratorio llama: "Está en proceso" → Cambiar estado
+    - Laboratorio llama: "Está listo" → Cambiar estado
+    - Retirar trabajo del laboratorio
+    - Marcar como "Entregado"
+5. **Colocación en Paciente**:
+    - Probar corona en paciente
+    - Si ajusta bien: Cementar
+    - Registrar en evolución del presupuesto
+
+#### Tiempos Típicos por Trabajo
+
+| Tipo de Trabajo             | Días Estimados |
+| --------------------------- | -------------- |
+| Corona metal-porcelana      | 7-10 días      |
+| Corona zirconio             | 10-14 días     |
+| Puente 3 unidades           | 10-14 días     |
+| Prótesis removible completa | 14-21 días     |
+| Placa de relajación         | 3-5 días       |
+
+---
+
+### Flujo de Inventario
+
+#### Control de Stock
+
+**Escenario**: Gestión diaria del inventario.
+
+1. **Revisar Alertas**:
+    - Al iniciar sesión, ver productos con bajo stock
+    - Identificar qué se necesita comprar
+2. **Crear Orden de Compra**:
+    - Ve a "Stock" → "Órdenes"
+    - Nueva orden al proveedor habitual
+    - Agregar productos necesarios
+    - Enviar orden (email/teléfono al proveedor)
+3. **Recibir Mercadería**:
+    - Cuando llega el pedido, verificar contenido
+    - Marcar orden como "Recibido" en el sistema
+    - El stock se actualiza automáticamente
+4. **Uso Diario**:
+    - Cuando se usa material en tratamiento
+    - Registrar salida de stock (opcional)
+    - O hacer conteo periódico y ajustar
+
+#### Conteo Físico Periódico
+
+**Frecuencia recomendada**: Mensual
+
+1. Contar físicamente cada producto
+2. Comparar con stock del sistema
+3. Ajustar diferencias
+4. Investigar causas de discrepancias

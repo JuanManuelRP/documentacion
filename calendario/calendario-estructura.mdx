@@ -1,0 +1,127 @@
+# Estructura del modulo calendario y sus especificaciones
+
+## Acceso al Módulo
+
+### Desde el Menú Lateral
+
+Haz clic en **"Calendario"** en el menú lateral izquierdo. Esto te llevará a la vista diaria por defecto.
+
+**Permisos Requeridos**:
+
+-   **`list_calendar`** - Ver el calendario
+-   **`add_appointment`** - Crear citas (opcional según tu rol)
+
+---
+
+## Vistas Disponibles
+
+El módulo de Calendario ofrece dos vistas principales:
+
+### 1. Vista Diaria (`/calendar/daily`)
+
+Muestra la agenda completa de UN día específico.
+
+**Características**:
+
+-   Franja horaria de 6:00 AM a 10:00 PM
+-   Columnas por doctor (si hay múltiples profesionales)
+-   Vista detallada de cada cita
+-   Fácil drag & drop para mover citas
+-   Ideal para: Gestión del día a día, recepción
+
+[IMAGEN: Vista diaria del calendario con citas]
+
+### 2. Vista Semanal (`/calendar/weekly`)
+
+Muestra la agenda completa de UNA semana (lunes a domingo).
+
+**Características**:
+
+-   7 días en pantalla simultáneamente
+-   Vista compacta de citas
+-   Navegación rápida entre semanas
+-   Identificación de días con mayor carga
+-   Ideal para: Planificación semanal, coordinación
+
+[IMAGEN: Vista semanal del calendario]
+
+---
+
+## Elementos Comunes en Ambas Vistas
+
+### Barra Superior
+
+#### Selector de Fecha
+
+-   **Fecha actual**: Se muestra destacada
+-   **Botones de navegación**:
+    -   **Anterior**: Día/semana previa
+    -   **Hoy**: Volver a la fecha actual
+    -   **Siguiente**: Día/semana siguiente
+-   **Selector de fecha**: Hacer clic para elegir fecha específica en calendario
+
+#### Filtro de Doctores
+
+-   **Solo si hay múltiples profesionales**
+-   Dropdown para seleccionar qué doctor(es) ver
+-   Opciones:
+    -   Todos los doctores
+    -   Doctor específico
+    -   Múltiples doctores
+
+**Permiso requerido**: `select_doctors`
+
+#### Botón "Nueva Cita"
+
+-   **Botón azul** con ícono "+"
+-   Abre modal para crear cita
+-   **Permiso requerido**: `add_appointment`
+
+#### Botón "Bloqueo de Agenda"
+
+-   Crea bloqueos en la agenda (almuerzos, reuniones, etc.)
+-   **Permiso requerido**: `add_agenda_break`
+
+### Estados de Citas (Colores)
+
+El sistema usa colores para identificar el estado de cada cita:
+
+| Color        | Estado     | Descripción                     |
+| ------------ | ---------- | ------------------------------- |
+| **Amarillo** | Pendiente  | Cita creada pero no confirmada  |
+| **Verde**    | Confirmada | Paciente confirmó su asistencia |
+| **Rojo**     | Cancelada  | Cita anulada                    |
+
+**Nota**: Los nombres y colores de los estados dependen de la configuración de "Estados del Calendario" en Administración, y son completamente modificables.
+
+## Funcionalidades Especiales
+
+### Drag & Drop (Arrastrar y Soltar)
+
+**En Vista Diaria**:
+
+-   Puedes arrastrar una cita a otro horario
+-   O a otra columna (otro doctor)
+-   El sistema actualiza automáticamente
+
+**Limitaciones**:
+
+-   Requiere permisos de edición
+
+### Clic Rápido para Crear Cita
+
+**En Vista Diaria**:
+
+1. Haz clic en un espacio vacío del calendario
+2. Se abre modal con fecha/hora pre-completada
+3. Solo completas paciente y motivo
+
+### Notificaciones Automáticas (si está configurado)
+
+El sistema puede enviar:
+
+-   **24h antes**: Recordatorio de cita al paciente
+-   **Al crear**: Confirmación de cita agendada
+-   **Al cancelar**: Notificación de cancelación
+
+**Nota**: Depende de la configuración del administrador.

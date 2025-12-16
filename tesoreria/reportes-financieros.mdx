@@ -1,0 +1,112 @@
+# Reportes Financieros - Visión General.
+
+## 1. Reporte de Ventas (`/treasury/reports/sales`)
+
+**Qué muestra**: Todos los pagos recibidos en un período.
+
+**Filtros**:
+
+-   Rango de fechas
+-   Doctor (producción por profesional)
+-   Método de pago
+-   Moneda
+
+**Información**:
+
+-   Lista de todos los pagos
+-   Monto por pago
+-   Paciente
+-   Fecha
+-   **Total del período**
+
+**Uso típico**: Ver ingresos del mes, semana o día.
+
+## 2. Reporte de Deudores (`/treasury/reports/debts`)
+
+**Qué muestra**: Pacientes que tienen saldo pendiente.
+
+**Información por paciente**:
+
+-   Nombre del paciente
+-   Total adeudado
+-   Total pagado
+-   Saldo pendiente
+-   Días de mora (si aplica)
+-   Último pago
+
+**Ordenamiento**:
+
+-   Por monto (mayor a menor deuda)
+-   Por fecha (más atrasados primero)
+-   Alfabético
+
+**Uso típico**: Identificar pacientes para recordatorios de pago.
+
+![Reporte de deudores.png](/images/Reportededeudores.png)
+
+## 3. Reporte de Balance (`/treasury/reports/balance`)
+
+**Qué muestra**: Comparación entre ingresos y egresos.
+
+**Información**:
+
+-   Total de ingresos del período
+-   Total de gastos del período
+-   **Balance** (ingresos - gastos)
+-   Gráfico de evolución
+
+**Filtros**:
+
+-   Rango de fechas
+-   Por caja
+
+**Uso típico**: Análisis de rentabilidad mensual.
+
+## 4. Reporte de Movimientos (`/treasury/accounts/banks`)
+
+**Qué muestra**: Todas las transacciones (ingresos y egresos) por caja.
+
+**Información**:
+
+-   Fecha de movimiento
+-   Tipo (Ingreso/Egreso)
+-   Monto
+-   Caja origen/destino
+-   Descripción
+-   Saldo resultante
+
+**Filtros**:
+
+-   Rango de fechas
+-   Caja específica
+-   Tipo de movimiento
+
+**Uso típico**: Auditoría de cajas, cuadre diario.
+
+## 5. Reporte de Ingresos (`/treasury/reports/income`)
+
+**Qué muestra**: Análisis detallado de cobranzas.
+
+**Desglose**:
+
+-   Por método de pago (cuánto en efectivo, tarjeta, etc.)
+-   Por doctor (producción individual)
+-   Por tratamiento (qué genera más ingresos)
+
+**Uso típico**: Estrategia de cobranza, evaluación de performance.
+
+## 6. Reporte de Personal (`/treasury/reports/personal`)
+
+**Qué muestra**: Producción de cada doctor.
+
+**Información por doctor**:
+
+-   Cantidad de pacientes atendidos
+-   Cantidad de presupuestos creados
+-   Total facturado
+-   Total cobrado
+-   Pendiente de cobro
+
+**Uso típico**: Liquidación de comisiones, evaluación de desempeño.
+
+**Permiso**: `see_report_personal` (generalmente solo admin)
